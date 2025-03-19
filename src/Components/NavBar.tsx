@@ -7,7 +7,7 @@ const NavBar:React.FC = () =>{
 
         const menuItems = [
             {
-                    name :'Welcome',
+                    name :'Home',
                     path :'/'
             },
             {
