@@ -1,6 +1,8 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import '../CSS/Navbar.css';
+import i1 from '../assets/pexels-photo-12781427.jpeg'
+import i2 from '../assets/img_5.png'
 
 const NavBar: React.FC = () => {
     const navigate = useNavigate();
@@ -36,7 +38,7 @@ const NavBar: React.FC = () => {
         <>
             <div className="navbar-container">
                 <div className="logo-section">
-                    <img src="../assets/pexels-photo-12781427.jpeg" alt="Sri Lanka Railways" className="railways-logo" />
+                    <img src={i1} alt="Sri Lanka Railways" className="railways-logo" />
                     <span className="logo-text">Sri Lanka Railways</span>
                 </div>
 
@@ -55,7 +57,7 @@ const NavBar: React.FC = () => {
 
                 <div className="partner-section">
                     <span className="technology-partner">Technology Partner</span>
-                    <img src="../assets/react.svg" alt="SLT MOBITEL" className="partner-logo" />
+                    <img src={i2} alt="SLT MOBITEL" className="partner-logo" />
                 </div>
             </div>
 
