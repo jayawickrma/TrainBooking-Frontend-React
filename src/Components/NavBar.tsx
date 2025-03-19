@@ -14,12 +14,8 @@ const NavBar: React.FC = () => {
             name: 'Gallery',
             path: '/gallery'
         },
-        // {
-        //     name: 'History',
-        //     path: '/history'
-        // },
         {
-            name: 'Our services',
+            name: 'Trains & Schedules',
             path: '/services'
         },
         {
@@ -29,7 +25,11 @@ const NavBar: React.FC = () => {
         {
             name: 'Terms & Conditions',
             path: '/rules'
-        }
+        },
+        {
+            name: 'Book Now',
+            path: '/booking'
+        },
     ];
 
     return (
@@ -60,7 +60,6 @@ const NavBar: React.FC = () => {
             </div>
 
             <div className="auth-bar">
-                <button className="buy-tickets-btn">Buy Commuter Tickets</button>
                 <span className="account-text">Already have an account?</span>
                 <button className="login-btn">Login</button>
                 <span className="or-text">or</span>
