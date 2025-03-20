@@ -1,8 +1,8 @@
 import  { useState, useEffect } from "react";
 import '../CSS/imageCoursel.css'; // Import the updated CSS
-import image1 from '../assets/img_2.png';
-import image from '../assets/img_4.png';
-import image2 from '../assets/img_3.png';
+import image1 from '../assets/img_4.png';
+import image from '../assets/img_2.png';
+import image2 from '../assets/img_6.png';
 
 const ImageCarousel = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
