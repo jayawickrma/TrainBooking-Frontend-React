@@ -1,16 +1,16 @@
-class TrainModel{
+interface TrainModel{
     trainId:string;
     trainName:string;
     route:string;
-    capacity:number;
-    trainImage :string
+    capacity:string;
+    trainImage? :string
 
-    constructor(trainId:string,trainName:string,route:string,capacity:number,trainImage:string) {
-        this.trainName =trainName;
-        this.capacity =capacity;
-        this.route =route;
-        this.trainId =trainId;
-        this.trainImage =trainImage
-    }
+    // constructor(trainId:string,trainName:string,route:string,capacity:string,trainImage:string) {
+    //     this.trainName =trainName;
+    //     this.capacity =capacity;
+    //     this.route =route;
+    //     this.trainId =trainId;
+    //     this.trainImage =trainImage
+    // }
 }
 export default TrainModel

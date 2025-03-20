@@ -13,6 +13,7 @@ export const getAllTrains =createAsyncThunk(
         async()=>{
                 try {
                         const resp =await api.get("/train");
+                        console.log(resp)
                         return resp.data
                 }catch (e){
                     console.log(e)
