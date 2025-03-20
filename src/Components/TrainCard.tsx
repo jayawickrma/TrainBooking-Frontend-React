@@ -1,5 +1,5 @@
 import TrainModel from "../Model/TrainModel.ts"
-function CropCard({train}: {train: TrainModel}) {
+function TrainCard({train}: {train: TrainModel}) {
 
     return(
         <>
@@ -31,4 +31,4 @@ function CropCard({train}: {train: TrainModel}) {
     )
 }
 
-export default CropCard;
+export default TrainCard;
