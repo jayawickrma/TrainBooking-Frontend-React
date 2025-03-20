@@ -1,6 +1,7 @@
 .galleryContainer {
-    width: 100vw;
-    padding: 2rem 1rem;
+    height: 100vh;
+    width: 98.8vw;
+    padding: 1rem 1rem;
     background-color: white;
     margin-left: -150px;
 }
@@ -14,31 +15,33 @@
 
 .galleryGrid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    border-color: #1a1a1a;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; /* This creates gaps between all grid items */
+    justify-items: center;
 }
 
 .galleryItem {
-    border: 1px solid #000000;
+    border: 1px solid #eaeaea;
     border-radius: 2px;
     overflow: hidden;
+    width: 100%;
+    max-width: 350px;
 }
 
 .galleryImage {
-    width: 50%;
-    height: 16rem;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 1023px) {
     .galleryGrid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 767px) {
     .galleryGrid {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
     }
 }

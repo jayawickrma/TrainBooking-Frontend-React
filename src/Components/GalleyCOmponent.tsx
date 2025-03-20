@@ -12,7 +12,7 @@ interface GalleryProps {
 
 const Gallery: React.FC<GalleryProps> = ({ images, title = "Gallery" }) => {
     return (
-        <div className={styles.galleryContainer}>
+        <div className={styles.galleryContainer}> <br/> <br/>
             <h2 className={styles.galleryTitle}>{title}</h2>
 
             <div className={styles.galleryGrid}>
@@ -27,6 +27,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, title = "Gallery" }) => {
                 ))}
             </div>
         </div>
+
     );
 };
 
