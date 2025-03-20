@@ -1,4 +1,5 @@
 import GalleyCOmponent from "../Components/GalleyCOmponent.tsx";
+import Footer from "../Components/Footer.tsx";
 
 export function Gallery(){
 
@@ -81,6 +82,7 @@ export function Gallery(){
                     </p>
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }

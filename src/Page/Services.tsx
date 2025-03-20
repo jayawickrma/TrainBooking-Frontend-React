@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../Store/Store";
 import TrainCard from "../Components/TrainCard";
 import TrainModel from "../Model/TrainModel.ts";
+import Footer from "../Components/Footer.tsx";
 
 export function Services() {
     const dispatch = useDispatch<AppDispatch>();
@@ -22,6 +23,7 @@ export function Services() {
                 {trains.map((train) => (
                     <TrainCard key={train.trainId} train={train} />
                 ))}
+                <Footer/>
             </div>
         </>
     );
