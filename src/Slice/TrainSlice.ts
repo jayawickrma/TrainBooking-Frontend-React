@@ -3,11 +3,10 @@ import TrainModel from "../Model/TrainModel.ts";
 import {api} from "../Services/api.ts";
 
 
-const initialState :{train:TrainModel[]}={
+const initialState :
+    {train:TrainModel[]}={
         train :[]
 }
-
-
 export const getAllTrains =createAsyncThunk(
     '/train',
         async()=>{

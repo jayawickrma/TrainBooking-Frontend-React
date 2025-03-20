@@ -7,20 +7,20 @@ import TrainModel from "../Model/TrainModel.ts";
 
 export function Services() {
     const dispatch = useDispatch<AppDispatch>();
-    const train: TrainModel[] = useSelector((state: RootState) => state.trains);
+    const trains: TrainModel[] = useSelector((state: RootState) => state.trains.train);
 
     useEffect(() => {
-        if (train.length === 0) {
+        if (trains.length === 0) {
             dispatch(getAllTrains());
         }
-    }, [dispatch, train]);
+    }, [dispatch, trains]);
 
     return (
         <>
             <h1>Trains</h1>
             <div className="grid grid-cols-4 gap-5 p-5">
-                {train.map((train) => (
-                    <TrainCard key={train.trainId} train={train} /> // Pass a single `train` object
+                {trains.map((train) => (
+                    <TrainCard key={train.trainId} train={train} />
                 ))}
             </div>
         </>
