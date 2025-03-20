@@ -7,6 +7,9 @@ import i2 from '../assets/img_5.png'
 const NavBar: React.FC = () => {
     const navigate = useNavigate();
 
+    const handleLoginClick = () => {
+        navigate("/login"); // Navigate to the login page
+    };
     const menuItems = [
         {
             name: 'Home',
@@ -63,9 +66,9 @@ const NavBar: React.FC = () => {
 
             <div className="auth-bar">
                 <span className="account-text">Already have an account?</span>
-                <button className="login-btn">Login</button>
+                <button onClick={handleLoginClick} className="login-btn">Login</button>
                 <span className="or-text">or</span>
-                <button className="signup-btn">Sign Up</button>
+                <button onClick={handleLoginClick} className="signup-btn">Sign Up</button>
             </div>
         </>
     );

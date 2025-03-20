@@ -7,6 +7,7 @@ import { Booking } from "./Page/Booking.tsx";
 import { Contact } from "./Page/Contact.tsx";
 import { Services } from "./Page/Services.tsx";
 import { TermsConditions } from "./Page/Terms&Conditons.tsx";
+import LoginComponent from "./Components/LoginComponent.tsx";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/services" element={<Services />} />
                     <Route path="/rules" element={<TermsConditions />} />
+                    <Route path="/login" element={<LoginComponent />}/>
                 </Routes>
             </Router>
         </>
