@@ -1,7 +1,7 @@
 import ImageCarousel from "../Components/ImageCoursel.tsx";
 import GalleryComponent from "../Components/GalleyCOmponent.tsx";
 import Footer from "../Components/Footer.tsx";
-
+import '../CSS/History.css'
 
 export function Content(){
         return(
