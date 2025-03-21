@@ -13,7 +13,7 @@
 /* Left sidebar */
 .booking-sidebar {
     display: none;
-    width: 33.333%;
+    width: 12.333%;
     background: linear-gradient(to right, #0066cc, #0099ff);
     color: white;
     padding: 2rem;
@@ -33,13 +33,14 @@
 
 /* Form container */
 .booking-form-container {
-    width: 100%;
+    width: 125%;
     padding: 2rem;
     background-color: #ffffff;
 }
 
 /* Tabs */
 .booking-tabs {
+
     display: flex;
     margin-bottom: 1.5rem;
     border-bottom: 1px solid #e5e5e5;
@@ -69,6 +70,7 @@
 
 /* Form */
 .booking-form {
+    width: 114%;
     background-color: white;
     border-radius: 8px;
     padding: 1.5rem;
@@ -244,4 +246,19 @@ input[type="number"] {
     .form-row {
         flex-direction: row;
     }
+}
+/* Confirm Booking Button */
+.confirm-button {
+    padding: 0.75rem 1.5rem;
+    background: #28a745; /* Green color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.confirm-button:hover {
+    background: #218838; /* Darker green on hover */
 }

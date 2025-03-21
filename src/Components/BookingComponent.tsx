@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "../CSS/Booking.css"
+import "../CSS/Booking.css";
+
 export function BookingComponent() {
     const [activeTab, setActiveTab] = useState("generalppassenger");
     const [returnTrip, setReturnTrip] = useState(false);
@@ -94,7 +95,7 @@ export function BookingComponent() {
                                     <option>Second Class</option>
                                     <option>Third Class</option>
                                 </select>
-                            </div>
+                            </div> <br /> <br />
 
                             {/* Number of Passengers & Return Toggle */}
                             <div className="passenger-row">
@@ -113,7 +114,7 @@ export function BookingComponent() {
                                         <span>Return</span>
                                     </label>
                                 </div>
-                            </div>
+                            </div> <br /> <br />
 
                             {/* reCAPTCHA */}
                             <div className="recaptcha-box">
@@ -124,7 +125,7 @@ export function BookingComponent() {
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 64 64">
                                             <path
                                                 d="M64 32c0-17.673-14.327-32-32-32S0 14.327 0 32c0 8.284 3.164 15.818 8.331 21.494"
-                                                fill="none" stroke="#ccc" strokeWidth="2"/>
+                                                fill="none" stroke="#ccc" strokeWidth="2" />
                                         </svg>
                                         <div className="recaptcha-terms">reCAPTCHA</div>
                                         <div className="recaptcha-terms">Privacy - Terms</div>
@@ -136,6 +137,7 @@ export function BookingComponent() {
                             <div className="form-buttons">
                                 <button type="reset" className="reset-button">Reset</button>
                                 <button type="submit" className="search-button">Search</button>
+                                <button type="button" className="confirm-button">Confirm Booking</button>
                             </div>
                         </form>
                     </div>
