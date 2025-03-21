@@ -111,7 +111,7 @@ export function Content(){
                             </div>
                     </div> <br/> <br/>
                     <ScheduleComponent/>  <br/> <br/>
-                    <GalleryComponent/> <br/>
+                    <GalleryComponent/>
                     <ContactForm/>  <br/> <br/> <br/> <br/>
                     <TermsAndConditions/>
                     <Footer/>
