@@ -24,8 +24,10 @@ const dummyTrains: TrainModel[] = [
     { trainId: "9", trainName: "Samudra Devi | සමුද්‍ර දේවී", route: "Maradana to Galle", capacity: "2000", trainImage: samudradewi },
 ];
 
+
 export function Services() {
     return (
+
         <> <br/> <br/> <br/> <br/>
             {/* Page Title */}
             <h1 className="text-3xl font-bold text-center text-gray-900 my-6">🚆 Train Services</h1> <br/> <br/> <br/>
@@ -36,7 +38,6 @@ export function Services() {
                     <TrainCard key={train.trainId} train={train} />
                 ))}
             </div>
-
             {/* Footer */}
             <Footer />
         </>
