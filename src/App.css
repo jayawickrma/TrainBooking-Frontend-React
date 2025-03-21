@@ -1,7 +1,13 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+h1, h2, h3, h4, h5, h6, .title {
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* If your titles are inside specific containers, you can also target them more specifically */
+.card h1, .card h2, .card h3,
+.read-the-docs h1, .read-the-docs h2, .read-the-docs h3 {
   text-align: center;
 }
 
