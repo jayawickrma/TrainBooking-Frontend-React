@@ -1,18 +1,18 @@
 .train-card {
     width: 250px;
-    /*height: 300px;*/
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
     transition: box-shadow 0.4s ease-in-out;
     overflow: hidden;
+    margin: 10px;
+    display: inline-block;
 }
 
 .train-card:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Image Container */
 .train-card-image {
     width: 100%;
     height: 150px;
@@ -29,7 +29,6 @@
     object-fit: cover;
 }
 
-/* Train Details */
 .train-card-details {
     padding: 12px;
     text-align: center;

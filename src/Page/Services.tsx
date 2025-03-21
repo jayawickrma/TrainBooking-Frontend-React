@@ -26,17 +26,15 @@ const dummyTrains: TrainModel[] = [
 
 export function Services() {
     return (
-        <>
+        <> <br/> <br/> <br/> <br/>
             {/* Page Title */}
-            <h1 className="text-3xl font-bold text-center text-gray-900 my-6">🚆 Train Services</h1>
+            <h1 className="text-3xl font-bold text-center text-gray-900 my-6">🚆 Train Services</h1> <br/> <br/> <br/>
 
             {/* Train Cards Grid */}
-            <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {dummyTrains.map((train) => (
-                        <TrainCard key={train.trainId} train={train} />
-                    ))}
-                </div>
+            <div className="train-card-container">
+                {dummyTrains.map((train) => (
+                    <TrainCard key={train.trainId} train={train} />
+                ))}
             </div>
 
             {/* Footer */}
@@ -44,3 +42,4 @@ export function Services() {
         </>
     );
 }
+
