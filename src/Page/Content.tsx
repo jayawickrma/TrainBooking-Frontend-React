@@ -9,7 +9,7 @@ import ContactForm from "../Components/Contact.tsx";
 export function Content(){
         return(
             <>
-                    <ImageCarousel/>
+                    <ImageCarousel/> <br/>
                     <div className="container mx-auto px-4 py-8 bg-white">
                             {/* Title Section */}
                             <div className="mb-6">
@@ -85,7 +85,7 @@ export function Content(){
                                             </div>
                                     </div>
                             </div>
-
+ <br/> <br/> <br/>
                             {/* Did You Know Section */}
                             <div className="mt-6 animate-fade-in">
                                     <div className="bg-blue-50 p-4 rounded-lg shadow-md">
@@ -109,10 +109,10 @@ export function Content(){
                                             </div>
                                     </div>
                             </div>
-                    </div>
-                    <ScheduleComponent/>
-                    <GalleryComponent/>
-                    <ContactForm/>  <br/> <br/> <br/>
+                    </div> <br/> <br/>
+                    <ScheduleComponent/>  <br/> <br/>
+                    <GalleryComponent/> <br/>
+                    <ContactForm/>  <br/> <br/> <br/> <br/>
                     <TermsAndConditions/>
                     <Footer/>
             </>
