@@ -10,6 +10,7 @@ import dalukumari from "../assets/glukumari.png";
 import nightmail from "../assets/nightmail.png";
 import sagarika from "../assets/sagarika.png";
 import samudradewi from "../assets/samudradewi.png";
+import ScheduleComponent from "../Components/ScheduleComponent.tsx";
 
 // Dummy Train Data
 const dummyTrains: TrainModel[] = [
@@ -39,6 +40,7 @@ export function Services() {
                 ))}
             </div>
             {/* Footer */}
+            <ScheduleComponent/>
             <Footer />
         </>
     );

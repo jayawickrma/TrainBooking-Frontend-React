@@ -3,7 +3,7 @@ import {Button, notification} from "antd";
 import React from "react";
 
 export const api = axios.create({
-    baseURL: "http://localhost:8080/trainBooking/api/v1/"
+    baseURL: "http://localhost:8080/trainBooking/api/trainBooking/"
 });
 
 api.interceptors.request.use(

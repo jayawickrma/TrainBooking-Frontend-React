@@ -2,6 +2,7 @@ import ImageCarousel from "../Components/ImageCoursel.tsx";
 import GalleryComponent from "../Components/GalleyCOmponent.tsx";
 import Footer from "../Components/Footer.tsx";
 import '../CSS/History.css'
+import ScheduleComponent from "../Components/ScheduleComponent.tsx";
 
 export function Content(){
         return(
@@ -107,6 +108,7 @@ export function Content(){
                                     </div>
                             </div>
                     </div>
+                    <ScheduleComponent/>
                     <GalleryComponent/>
                     <Footer/>
             </>

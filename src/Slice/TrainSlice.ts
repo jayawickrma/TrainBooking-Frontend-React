@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import TrainModel from "../Model/TrainModel.ts";
+import {TrainModel} from "../Model/TrainModel.ts";
 import {api} from "../Services/api.ts";
 
 
