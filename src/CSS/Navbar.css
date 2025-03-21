@@ -44,7 +44,7 @@ body {
     right: 0;
     z-index: 1000;
     width: 100%;
-    height: 50px; /* Fixed height */
+    height: 70px; /* Fixed height */
     transition: all 0.3s ease;
 }
 
