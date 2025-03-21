@@ -1,9 +1,10 @@
 import Footer from "../Components/Footer.tsx";
+import TermsAndConditions from "../Components/TermsAndConditionComponent.tsx";
 
 export function TermsConditions(){
     return(
-        <>
-                <h1>Therms & Conditions</h1>
+        <> <br/> <br/> <br/> <br/> <br/>
+                <TermsAndConditions/>
             <Footer/>
         </>
     )

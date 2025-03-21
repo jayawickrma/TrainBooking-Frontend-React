@@ -1,0 +1,119 @@
+/* Footer Styles */
+.footer {
+    background-color: #2d3035;
+    color: #ffffff;
+    padding: 24px 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.footer-info {
+    max-width: 400px;
+}
+
+.footer-copyright {
+    margin-bottom: 12px;
+    font-size: 13px;
+}
+
+.footer-address {
+    line-height: 1.5;
+    font-size: 13px;
+}
+
+.footer-partners {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.tech-partner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.partner-label {
+    color: #a0a0a0;
+    margin-right: 8px;
+    font-size: 13px;
+}
+
+.partner-logo {
+    height: 24px;
+    margin-right: 8px;
+}
+
+.govt-logo {
+    height: 40px;
+    margin-left: 8px;
+}
+
+.app-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.app-button {
+    height: 40px;
+}
+
+.footer-nav {
+    display: flex;
+    border-top: 1px solid #3d4045;
+    padding-top: 16px;
+}
+
+.footer-link {
+    margin-right: 40px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-partners {
+        margin-top: 24px;
+        text-align: left;
+    }
+
+    .tech-partner {
+        justify-content: flex-start;
+    }
+
+    .app-buttons {
+        justify-content: flex-start;
+    }
+
+    .footer-nav {
+        flex-wrap: wrap;
+    }
+
+    .footer-link {
+        margin-bottom: 8px;
+    }
+}

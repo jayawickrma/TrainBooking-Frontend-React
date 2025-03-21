@@ -3,6 +3,8 @@ import GalleryComponent from "../Components/GalleyCOmponent.tsx";
 import Footer from "../Components/Footer.tsx";
 import '../CSS/History.css'
 import ScheduleComponent from "../Components/ScheduleComponent.tsx";
+import TermsAndConditions from "../Components/TermsAndConditionComponent.tsx";
+import ContactForm from "../Components/Contact.tsx";
 
 export function Content(){
         return(
@@ -110,6 +112,8 @@ export function Content(){
                     </div>
                     <ScheduleComponent/>
                     <GalleryComponent/>
+                    <ContactForm/>  <br/> <br/> <br/>
+                    <TermsAndConditions/>
                     <Footer/>
             </>
         )
