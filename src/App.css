@@ -1,3 +1,4 @@
+/* Your existing app.css */
 h1, h2, h3, h4, h5, h6, .title {
   text-align: center;
   width: 100%;
@@ -45,4 +46,37 @@ h1, h2, h3, h4, h5, h6, .title {
 
 .read-the-docs {
   color: #888;
+}
+
+/* ADD THIS SECTION TO ENSURE FOOTER IS BLACK WITH WHITE TEXT */
+footer {
+  background-color:#2B2B2B  !important;
+  color: #ffffff !important;
+}
+
+footer .container {
+  background-color: #2B2B2B !important;
+}
+
+footer .company-info,
+footer .quick-links,
+footer .partner-section,
+footer .footer-nav {
+  background-color: #2B2B2B !important;
+  color: #ffffff !important;
+}
+
+footer a,
+footer p,
+footer h3,
+footer .partner-name,
+footer .nav-link,
+footer .link-item,
+footer .address p {
+  color: #ffffff !important;
+}
+
+footer .partner-name:first-child,
+footer .partner-name:last-child {
+  color: #ffffff !important;
 }

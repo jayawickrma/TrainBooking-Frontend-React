@@ -56,7 +56,7 @@ export function BookingComponent() {
                                 <div className="form-group">
                                     <label>Time</label>
                                     <select>
-                                        <option>Choose Schedule</option>
+                                        <option>Choose Time</option>
                                         <option>Colombo</option>
                                         <option>Kandy</option>
                                         <option>Galle</option>
