@@ -22,6 +22,7 @@ function App() {
                     <Route path="/services" element={<Services />} />
                     <Route path="/rules" element={<TermsConditions />} />
                     <Route path="/login" element={<LoginComponent />}/>
+                    <Route path="/signUp" element={<LoginComponent/> }/>
                 </Routes>
             </Router>
         </>

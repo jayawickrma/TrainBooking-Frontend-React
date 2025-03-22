@@ -1,9 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import TrainSlice from "../Slice/TrainSlice.ts";
+import UserSlice from "../Slice/UserSlice.ts";
 
 export const store =configureStore({
     reducer:{
-        trains :TrainSlice
+        trains :TrainSlice,
+        user :UserSlice
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

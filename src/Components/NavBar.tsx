@@ -15,7 +15,7 @@ const NavBar: React.FC = () => {
     };
 
     const handleSignupClick = () => {
-        navigate("/signup"); // Navigate to the signup page
+        navigate("/signUp"); // Navigate to the signup page
     };
 
     const toggleMobileMenu = () => {
