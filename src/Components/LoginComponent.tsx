@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Input, Checkbox, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../Store/Store.ts";
-import { login, register, UserRootState } from "../Slice/UserSlice.ts";
+import { AppDispatch, RootState } from "../Store/Store.ts";
+import { login, register } from "../Slice/UserSlice.ts";
 import { User } from "../Model/UserModel.ts";
 import { motion } from "framer-motion";
+import Swal from "sweetalert2"; // Import SweetAlert2
 import "../CSS/loginPage.css"; // Ensure this CSS file is updated
 
 function Login() {
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
-    const isAuthenticated = useSelector((state: UserRootState) => state.user.isAuthenticated);
+    const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
 
     const [formData, setFormData] = useState({
         email: "",
@@ -22,7 +23,7 @@ function Login() {
 
     useEffect(() => {
         if (isAuthenticated) {
-            navigate("/dashboard"); // Redirect to dashboard after authentication
+            navigate("/"); // Redirect to home page after authentication
         }
     }, [isAuthenticated, navigate]);
 
@@ -45,7 +46,16 @@ function Login() {
             } else {
                 const result = await dispatch(login(user)).unwrap();
                 if (result) {
-                    message.success("Login successful! Redirecting to dashboard.");
+                    // Show SweetAlert2 success alert
+                    Swal.fire({
+                        title: "Sign In Successful!",
+                        text: "You have successfully signed in.",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                    }).then(() => {
+                        // Navigate to home page after the alert is closed
+                        navigate("/");
+                    });
                 }
             }
         } catch (error) {
@@ -59,7 +69,9 @@ function Login() {
             {/* Full-Screen Split-Screen Container */}
             <div className="split-container">
                 {/* Left Side: Image */}
-
+                <div className="left-side">
+                    {/* Add your image here */}
+                </div>
 
                 {/* Right Side: Form */}
                 <div className="right-side">
