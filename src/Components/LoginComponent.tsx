@@ -36,12 +36,19 @@ function Login() {
         }
 
         try {
-            const user = new User(formData.email, formData.password);
+            const user = new User(formData.email, formData.password,"USER");
             if (isSignUp) {
                 const result = await dispatch(register(user)).unwrap();
                 if (result) {
-                    message.success("Registration successful! Redirecting to login.");
-                    setIsSignUp(false); // Switch back to login form
+                    Swal.fire({
+                        title:"Successfully Created Account..",
+                        text:"Registration successful! Redirecting to login.",
+                        icon:"success",
+                        confirmButtonText:"OK"
+                    }).then(()=>{
+
+                    })
+                    setIsSignUp(true); // Switch back to login form
                 }
             } else {
                 const result = await dispatch(login(user)).unwrap();
