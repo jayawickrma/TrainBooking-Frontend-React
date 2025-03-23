@@ -23,7 +23,7 @@ export type BookingRootState = {
 };
 
 export const saveBooking = createAsyncThunk(
-    "booking/saveBooking",
+    "booking",
     async (bookingData: BookingModel, { dispatch }) => {
         try {
             const response = await api.post("booking", bookingData);
@@ -69,7 +69,8 @@ export const getAllBookings = createAsyncThunk(
     'booking/getAllBookings',
     async () => {
         try {
-            const response = await api.get("booking/getAllBookings");
+            const response = await api.get("booking/sample");
+            console.log(" sample test : ", response.data)
             return response.data;
         } catch (e) {
             console.log("Failed to get all bookings!", e);
@@ -95,7 +96,8 @@ export const getUserBookings = createAsyncThunk(
     'booking/getUserBookings',
     async (userId: string) => {
         try {
-            const response = await api.get(`booking/getUserBookings/${userId}`);
+            const response = await api.get(`booking/sample`);
+            console.log(" sample test : ", response.data)
             return response.data;
         } catch (e) {
             console.log("Failed to get user bookings!", e);

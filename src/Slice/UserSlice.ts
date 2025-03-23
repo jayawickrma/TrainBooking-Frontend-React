@@ -2,6 +2,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { api } from "../Services/api.ts";
 import { User } from "../Model/UserModel.ts";
 
+
+//
+// const api = axios.create({
+//     baseURL: "http://localhost:8080/trainBooking/api/trainBooking/"
+// });
+
 // Initial state for the user slice
 const initialState: {
     user: User | null;
@@ -39,6 +45,7 @@ export const register = createAsyncThunk(
     "auth/signUp",
     async (user: User) => {
         try {
+            console.log("url >> ", api)
             const response = await api.post("auth/signUp", user, { withCredentials: true });
             return response.data;
         } catch (e) {
@@ -52,6 +59,7 @@ export const login = createAsyncThunk(
     async (user: User) => {
         try {
             const response = await api.post("auth/signIn", user, { withCredentials: true });
+            console.log("res data", response.data);
             return response.data;
         } catch (e) {
             throw e;
@@ -96,15 +104,16 @@ const userSlice = createSlice({
             .addCase(login.fulfilled, (state, action) => {
                 if (action.payload) {
                     state.user = action.payload.user;
-                    state.token = action.payload.accessToken;
+                    state.token = action.payload.tokens;
                     state.refresh_token = action.payload.refreshToken;
                     state.username = action.payload.username;
                     state.isAuthenticated = true;
                     state.error = "";
 
                     // Store JWT tokens in localStorage
-                    localStorage.setItem("jwt_token", action.payload.accessToken);
+                    localStorage.setItem("tokens", action.payload.tokens);
                     localStorage.setItem("refresh_token", action.payload.refreshToken);
+                    console.log("tokens actual check ",  action.payload.tokens)
                 }
             })
             .addCase(login.pending, (state) => {

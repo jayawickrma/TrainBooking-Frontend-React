@@ -1,5 +1,6 @@
-import axios, { AxiosError } from "axios";
-import { Button, notification } from "antd";
+
+import axios, {AxiosError} from "axios";
+import {Button, notification} from "antd";
 import React from "react";
 
 export const api = axios.create({
@@ -7,19 +8,18 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use(
-    (config) => {
+    (config: any) => {
         if (!config.url?.includes("/auth")) {
-            // Fix: Use the correct token key from localStorage
             const token = localStorage.getItem("tokens");
-            console.log("================================================================"+token)
+            console.log("get tokens >> == ", token)
             if (token) {
-                config.headers.Authorization = `Bearer ${token}`;
+                config.headers["Authorization"] = `Bearer ${token}`
             }
         }
-        return config;
+        return config
     },
     (error) => {
-        return Promise.reject(error);
+        return Promise.reject(error)
     }
 );
 
@@ -27,13 +27,13 @@ api.interceptors.response.use((response) => response,
     async (error) => {
         const originalRequest = error.config;
 
-        if (error.response?.status === 401 && !originalRequest.isRetry) {
+        if (error.response.status === 401 && !originalRequest.isRetry) {
             originalRequest.isRetry = true;
 
             const refreshToken = localStorage.getItem("refresh_token");
             if (refreshToken) {
                 try {
-                    const response = await api.post(
+                    const response: any = await api.post(
                         "auth/refresh-token",
                         {},
                         {
@@ -42,52 +42,46 @@ api.interceptors.response.use((response) => response,
                             }
                         }
                     );
-                    const newAccessToken = response.data.accessToken;
-                    localStorage.setItem("jwt_token", newAccessToken);
-                    originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+                    const newAccessToken = response.data.tokens;
+                    localStorage.setItem("tokens", newAccessToken);
+                    originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
 
                     return api(originalRequest);
                 } catch (e) {
-                    const refreshError = e as AxiosError;
-                    console.error("Token refresh failed:", refreshError);
+                    const error = e as AxiosError;
+                    console.error("Token refresh failed:", error);
+                    console.log("response error " , error.response);
 
-                    if (!refreshError.response) {
+                    if (!error.response) {
                         console.error("No response from server!");
-                        localStorage.removeItem("jwt_token");
+                        localStorage.removeItem("tokens");
                         localStorage.removeItem("refresh_token");
-                        showSessionExpiredNotification();
-                        return Promise.reject(refreshError);
+                        showSuccessNotification();
+                        return;
                     }
 
-                    if (refreshError.response && (refreshError.response.status === 401 || refreshError.response.status === 403)) {
-                        localStorage.removeItem("jwt_token");
+                    if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+                        localStorage.removeItem("tokens");
                         localStorage.removeItem("refresh_token");
-                        showSessionExpiredNotification();
+                        showSuccessNotification();
                     }
-
-                    return Promise.reject(refreshError);
                 }
             } else {
-                localStorage.removeItem("jwt_token");
+                localStorage.removeItem("tokens");
                 localStorage.removeItem("refresh_token");
-                showSessionExpiredNotification();
+                showSuccessNotification();
             }
-        } else if (error.response?.status === 403) {
-            // Handle 403 Forbidden errors - user might need to log in again
-            console.error("Access forbidden - check user permissions");
-            showForbiddenNotification();
         }
-
         return Promise.reject(error);
     }
-);
+)
 
-export const showSessionExpiredNotification = () => {
+export const showSuccessNotification = () => {
     const key = "Session Expired";
 
     notification.error({
         message: "Session Expired",
-        description: "Please login to the system.",
+        description: "please login to the system.",
         placement: "bottomRight",
         key,
         btn: React.createElement(Button, {
@@ -96,28 +90,8 @@ export const showSessionExpiredNotification = () => {
             onClick: () => {
                 window.location.href = "/";
             },
-            children: "Login",
+            children: "Logout",
         }),
-        duration: 0,
-    });
-};
-
-export const showForbiddenNotification = () => {
-    const key = "Access Forbidden";
-
-    notification.error({
-        message: "Access Forbidden",
-        description: "You don't have permission to perform this action. Please login with appropriate credentials.",
-        placement: "bottomRight",
-        key,
-        btn: React.createElement(Button, {
-            type: "primary",
-            size: "small",
-            onClick: () => {
-                window.location.href = "/";
-            },
-            children: "Login",
-        }),
-        duration: 0,
+        duration:0,
     });
 };

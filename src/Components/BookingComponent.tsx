@@ -7,6 +7,7 @@ import {
 
 } from "../Slice/BookingSlice";
 import "../CSS/Booking.css";
+import {AppDispatch} from "../Store/Store.ts";
 
 export function BookingComponent() {
     // State variables for form
@@ -27,14 +28,14 @@ export function BookingComponent() {
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
 
     // Redux hooks
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     // Remove the unused 'bookings' variable to fix the first error
     // const bookings = useSelector((state: BookingRootState) => state.booking.bookings);
 
     // Load all bookings when component mounts
     useEffect(() => {
         // Fix the TypeScript error by using proper type annotation
-        dispatch(getAllBookings() as any);
+        dispatch(getAllBookings());
     }, [dispatch]);
 
     // Handle form field changes
@@ -356,7 +357,7 @@ export function BookingComponent() {
                                     Search
                                 </button>
                                 <button
-                                    type="submit"
+                                    type="button"
                                     className="confirm-button"
                                     disabled={isSubmitting}
                                 >
