@@ -26,7 +26,7 @@ export const saveBooking = createAsyncThunk(
     "booking/saveBooking",
     async (bookingData: BookingModel, { dispatch }) => {
         try {
-            const response = await api.post("booking/saveBooking", bookingData);
+            const response = await api.post("booking", bookingData);
             dispatch(getAllBookings());
             return response.data;
         } catch (e) {
