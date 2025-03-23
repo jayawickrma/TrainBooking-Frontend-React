@@ -45,10 +45,8 @@ function Login() {
                         text:"Registration successful! Redirecting to login.",
                         icon:"success",
                         confirmButtonText:"OK"
-                    }).then(()=>{
-
                     })
-                    setIsSignUp(true); // Switch back to login form
+                    setIsSignUp(false); // Switch back to login form
                 }
             } else {
                 const result = await dispatch(login(user)).unwrap();
