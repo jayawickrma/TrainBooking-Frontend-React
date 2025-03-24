@@ -1,42 +1,42 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {TrainModel} from "../Model/TrainModel.ts";
-import {api} from "../Services/api.ts";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { api } from "../Services/api";
+import {ScheduleModel} from "../Model/ScheduleModel.ts";
 
-
-const initialState :
-    {train:TrainModel[]}={
-    train :[]
+const initialState = {
+    schedule: [] as ScheduleModel[]
 }
-export const getAllTrains =createAsyncThunk(
-    '/train',
-    async()=>{
+
+export const getAllSchedules = createAsyncThunk(
+    'schedule/getAllSchedules',
+    async () => {
         try {
-            const resp =await api.get("/train");
-            console.log(resp)
-            return resp.data
-        }catch (e){
-            console.log(e)
-            throw e
+            const resp = await api.get("/schedule");
+            console.log(resp);
+            return resp.data;
+        } catch (e) {
+            console.error(e);
+            throw e;
         }
     }
 )
 
-const TrainSlice =createSlice({
-    name:"train",
+const ScheduleSlice = createSlice({
+    name: "schedule",
     initialState,
-    reducers:{},
-
-    extraReducers:(builder)=>{
-        builder.addCase(getAllTrains.fulfilled,(state, action)=>{
-            state.train =action.payload || []
-        })
-        builder.addCase(getAllTrains.pending,()=>{
-            console.log("pending get All Trains..")
-        })
-        builder.addCase(getAllTrains.rejected,()=>{
-            console.log("Rejected get All Trains")
-        })
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(getAllSchedules.fulfilled, (state, action) => {
+                state.schedule = action.payload || [];
+            })
+            .addCase(getAllSchedules.pending, () => {
+                console.log("Pending get All Schedules...");
+            })
+            .addCase(getAllSchedules.rejected, (state, action) => {
+                console.error("Rejected get All Schedules", action.error);
+                state.schedule = []; // Clear schedule on error
+            });
     }
-})
+});
 
-export default TrainSlice.reducer
+export default ScheduleSlice.reducer;

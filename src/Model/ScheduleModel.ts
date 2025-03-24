@@ -3,5 +3,5 @@ export interface ScheduleModel{
     arrivalTime:string,
     departureTime:string,
     date:string,
-    train:string,
+    trainId:string,
 }

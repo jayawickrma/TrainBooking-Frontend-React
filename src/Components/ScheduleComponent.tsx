@@ -1,24 +1,17 @@
-import  { useEffect, useState } from "react";
-import axios from "axios"; // For API calls
-import { ScheduleModel } from "../Model/ScheduleModel"; // Import the ScheduleModel interface
-import "../CSS/Schedule.css"
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../Store/Store";
+import { getAllSchedules } from "../Slice/ScheduleSlice";
+import "../CSS/Schedule.css";
 
-const ScheduleComponent = () => {
-    const [schedules, setSchedules] = useState<ScheduleModel[]>([]); // State to store schedule data
+const ScheduleComponent: React.FC = () => {
+    const dispatch = useDispatch();
+    const schedules = useSelector((state: RootState) => state.schedule.schedule);
 
-    // Fetch schedule data from the backend
     useEffect(() => {
-        const fetchSchedules = async () => {
-            try {
-                const response = await axios.get<ScheduleModel[]>("http://localhost:8080/trainBooking/api/trainBooking/schedule"); // Replace with your API endpoint
-                setSchedules(response.data); // Set the fetched data to state
-            } catch (error) {
-                console.error("Error fetching schedules:", error);
-            }
-        };
-
-        fetchSchedules();
-    }, []);
+        // @ts-ignore
+        dispatch(getAllSchedules());
+    }, [dispatch]);
 
     return (
         <div className="schedule-container">
@@ -26,21 +19,21 @@ const ScheduleComponent = () => {
             <table className="schedule-table">
                 <thead>
                 <tr>
-                    <th>Schedule ID</th>
-                    <th>Train</th>
-                    <th>Date</th>
+                    <th>Schedule No</th>
                     <th>Departure Time</th>
                     <th>Arrival Time</th>
+                    <th>Date</th>
+                    <th>Train</th>
                 </tr>
                 </thead>
                 <tbody>
                 {schedules.map((schedule) => (
                     <tr key={schedule.scheduleId}>
                         <td>{schedule.scheduleId}</td>
-                        <td>{schedule.train}</td>
-                        <td>{schedule.date}</td>
-                        <td>{schedule.departureTime}</td>
                         <td>{schedule.arrivalTime}</td>
+                        <td>{schedule.departureTime}</td>
+                        <td>{schedule.date}</td>
+                        <td>{schedule.trainId}</td>
                     </tr>
                 ))}
                 </tbody>
