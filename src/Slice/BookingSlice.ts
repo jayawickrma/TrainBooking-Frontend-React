@@ -94,7 +94,7 @@ export const getBookingById = createAsyncThunk(
 
 export const getUserBookings = createAsyncThunk(
     'booking/getUserBookings',
-    async (userId: string) => {
+    async () => {
         try {
             const response = await api.get(`booking/sample`);
             console.log(" sample test : ", response.data)

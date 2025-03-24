@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useDispatch,  } from "react-redux";
+import {useDispatch, useSelector,} from "react-redux";
 import { BookingModel } from "../Model/BookingModel";
 import {
     saveBooking,
@@ -7,9 +7,15 @@ import {
 
 } from "../Slice/BookingSlice";
 import "../CSS/Booking.css";
-import {AppDispatch} from "../Store/Store.ts";
+import {AppDispatch, RootState} from "../Store/Store.ts";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
+
+
 
 export function BookingComponent() {
+    const navigate = useNavigate();
     // State variables for form
     const [activeTab, setActiveTab] = useState("generalppassenger");
     const [returnTrip, setReturnTrip] = useState(false);
@@ -26,7 +32,7 @@ export function BookingComponent() {
     const [isRecaptchaChecked, setIsRecaptchaChecked] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
-
+    const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
     // Redux hooks
     const dispatch = useDispatch<AppDispatch>();
     // Remove the unused 'bookings' variable to fix the first error
@@ -37,6 +43,31 @@ export function BookingComponent() {
         // Fix the TypeScript error by using proper type annotation
         dispatch(getAllBookings());
     }, [dispatch]);
+    // Check authentication on component mount
+    useEffect(() => {
+        if (!isAuthenticated) {
+            // Show SweetAlert for unauthorized access
+            Swal.fire({
+                title: 'Access Denied',
+                text: 'Please sign in first to access the booking page.',
+                icon: 'warning',
+                confirmButtonText: 'Sign In',
+                showCancelButton: true,
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect to login page
+                    navigate('/login');
+                } else {
+                    // Redirect to home or another safe page
+                    navigate('/');
+                }
+            });
+        } else {
+            // If authenticated, load bookings
+            dispatch(getAllBookings());
+        }
+    }, [isAuthenticated, dispatch, navigate]);
 
     // Handle form field changes
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
