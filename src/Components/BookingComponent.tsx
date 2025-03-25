@@ -231,15 +231,15 @@ export function BookingComponent() {
                                         onChange={handleInputChange}
                                     >
                                         <option value="">Choose Train</option>
-                                        <option value="Yal Devi">Yal Devi | යාල් දේවී</option>
-                                        <option value="Udarata Menike">Udarata Menike | උඩරට මැණිකේ</option>
-                                        <option value="Uttara Devi">Uttara Devi | උත්තර දේවී</option>
-                                        <option value="Rajarata Rajini">Rajarata Rajini | රජරට රැජිණි</option>
-                                        <option value="Ruhunu Kumari">Ruhunu Kumari | රුහුණු කුමාරි</option>
-                                        <option value="Galu Kumari">Galu Kumari | ගාලු කුමාරි</option>
-                                        <option value="Sagarika">Sagarika | සාගරිකා</option>
-                                        <option value="Badulla Night Express">Badulla Night Express | බදුල්ල රාත්‍රී ශීඝ්‍රගාමී දුම්රිය</option>
-                                        <option value="Samudra Devi">Samudra Devi | සමුද්‍ර දේවී</option>
+                                        <option value="1">Yal Devi | යාල් දේවී</option>
+                                        <option value="2">Udarata Menike | උඩරට මැණිකේ</option>
+                                        <option value="3">Uttara Devi | උත්තර දේවී</option>
+                                        <option value="4">Rajarata Rajini | රජරට රැජිණි</option>
+                                        <option value="5">Ruhunu Kumari | රුහුණු කුමාරි</option>
+                                        <option value="6">Galu Kumari | ගාලු කුමාරි</option>
+                                        <option value="7">Sagarika | සාගරිකා</option>
+                                        <option value="8">Badulla Night Express | බදුල්ල රාත්‍රී ශීඝ්‍රගාමී දුම්රිය</option>
+                                        <option value="9">Samudra Devi | සමුද්‍ර දේවී</option>
                                     </select>
                                     {getErrorMessage("train")}
                                 </div>
