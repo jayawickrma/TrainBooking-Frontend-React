@@ -26,7 +26,7 @@ export const saveBooking = createAsyncThunk(
     "booking",
     async (bookingData: BookingModel, { dispatch }) => {
         try {
-            const response = await api.post("", bookingData);
+            const response = await api.post("/booking", bookingData);
             dispatch(getAllBookings());
             return response.data;
         } catch (e) {
@@ -40,7 +40,7 @@ export const updateBooking = createAsyncThunk(
     'booking/updateBooking',
     async (booking: BookingModel, { dispatch }) => {
         try {
-            const response = await api.put(`booking/updateBooking/${booking.bookingId}`, booking);
+            const response = await api.put(`api/trainBooking/booking/${booking.bookingId}`, booking);
             dispatch(getAllBookings());
             return response.data;
         } catch (e) {
@@ -54,9 +54,7 @@ export const deleteBooking = createAsyncThunk(
     'booking/deleteBooking',
     async (bookingId: string) => {
         try {
-            const response = await api.delete(`booking/deleteBooking`, {
-                params: { id: bookingId }, // Send bookingId as a query parameter
-            });
+            const response = await api.delete(`api/trainBooking/booking/${bookingId}`);
             return response.data;
         } catch (e) {
             console.error("Failed to delete booking:", e);
@@ -69,8 +67,8 @@ export const getAllBookings = createAsyncThunk(
     'booking/getAllBookings',
     async () => {
         try {
-            const response = await api.get("booking/sample");
-            console.log(" sample test : ", response.data)
+            const response = await api.get("/booking");
+            console.log(response.data)
             return response.data;
         } catch (e) {
             console.log("Failed to get all bookings!", e);
@@ -83,7 +81,7 @@ export const getBookingById = createAsyncThunk(
     'booking/getBookingById',
     async (bookingId: string) => {
         try {
-            const response = await api.get(`booking/getBooking/${bookingId}`);
+            const response = await api.get(`api/trainBooking/booking/${bookingId}`);
             return response.data;
         } catch (e) {
             console.log("Failed to get booking by ID!", e);
@@ -96,8 +94,7 @@ export const getUserBookings = createAsyncThunk(
     'booking/getUserBookings',
     async () => {
         try {
-            const response = await api.get(`booking/sample`);
-            console.log(" sample test : ", response.data)
+            const response = await api.get(`api/trainBooking/booking`);
             return response.data;
         } catch (e) {
             console.log("Failed to get user bookings!", e);

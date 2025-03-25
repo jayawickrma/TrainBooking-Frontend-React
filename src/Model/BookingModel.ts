@@ -1,6 +1,8 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export class BookingModel {
     bookingId: string;
-    bookedDate: Date;  // Using Date instead of LocalDate for TypeScript
+    bookedDate: Date;
     travelDate: Date;
     arrivalStation: string;
     departureStation: string;
@@ -10,7 +12,6 @@ export class BookingModel {
     trainList: string[];
 
     constructor(
-        bookingId: string,
         bookedDate: Date,
         travelDate: Date,
         arrivalStation: string,
@@ -20,7 +21,7 @@ export class BookingModel {
         userId: string,
         trainList: string[]
     ) {
-        this.bookingId = bookingId;
+        this.bookingId = `BOOK-${uuidv4()}`;
         this.bookedDate = bookedDate;
         this.travelDate = travelDate;
         this.arrivalStation = arrivalStation;
