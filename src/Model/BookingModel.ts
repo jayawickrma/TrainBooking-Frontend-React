@@ -21,7 +21,7 @@ export class BookingModel {
         userId: string,
         trainList: string[]
     ) {
-        this.bookingId = `BOOK-${uuidv4()}`;
+        this.bookingId = `BOOKING-${uuidv4()}`;
         this.bookedDate = bookedDate;
         this.travelDate = travelDate;
         this.arrivalStation = arrivalStation;
