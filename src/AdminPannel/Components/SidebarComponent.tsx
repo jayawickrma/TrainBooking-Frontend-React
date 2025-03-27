@@ -4,7 +4,7 @@ import payment from "../images/payment.png"
 import schedules from "../images/schedule.png"
 import trains from "../images/train.png"
 import booking from "../images/booking.png"
-
+import "../adminCss/SideBar.css"
 export function SidebarComponent(){
     const navigate = useNavigate(); // Use React Router navigation
 

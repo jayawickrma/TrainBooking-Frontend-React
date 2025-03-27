@@ -6,26 +6,38 @@ import { AppDispatch, RootState } from "../Store/Store.ts";
 import { login, register } from "../Slice/UserSlice.ts";
 import { User } from "../Model/UserModel.ts";
 import { motion } from "framer-motion";
-import Swal from "sweetalert2"; // Import SweetAlert2
-import "../CSS/loginPage.css"; // Ensure this CSS file is updated
+import Swal from "sweetalert2";
+import "../CSS/loginPage.css";
+
+// Enum to match backend Role
+enum Role {
+    ADMIN = "ADMIN",
+    USER = "USER"
+}
 
 function Login() {
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
     const isAuthenticated = useSelector((state: RootState) => state.user.isAuthenticated);
-
+    const userRole = useSelector((state: RootState) => state.user.role);
     const [formData, setFormData] = useState({
         email: "",
         password: "",
+        role: Role.USER, // Default role
         remember: false,
     });
 
     useEffect(() => {
         if (isAuthenticated) {
-            navigate("/"); // Redirect to home page after authentication
+            // Navigate based on user role
+            if (userRole === Role.ADMIN) {
+                navigate("/adminDashboard");
+            } else if (userRole === Role.USER) {
+                navigate("/");
+            }
         }
-    }, [isAuthenticated, navigate]);
+    }, [isAuthenticated, userRole, navigate]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -36,30 +48,39 @@ function Login() {
         }
 
         try {
-            const user = new User(formData.email, formData.password,"USER");
+            // Create User with role
+            const user = new User(
+                formData.email,
+                formData.password,
+                formData.role
+            );
+
             if (isSignUp) {
                 const result = await dispatch(register(user)).unwrap();
                 if (result) {
                     Swal.fire({
-                        title:"Successfully Created Account..",
-                        text:"Registration successful! Redirecting to login.",
-                        icon:"success",
-                        confirmButtonText:"OK"
-                    })
+                        title: "Successfully Created Account",
+                        text: "Registration successful! Redirecting to login.",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
                     setIsSignUp(false); // Switch back to login form
                 }
             } else {
                 const result = await dispatch(login(user)).unwrap();
                 if (result) {
-                    // Show SweetAlert2 success alert
                     Swal.fire({
                         title: "Sign In Successful!",
                         text: "You have successfully signed in.",
                         icon: "success",
                         confirmButtonText: "OK",
                     }).then(() => {
-                        // Navigate to home page after the alert is closed
-                        navigate("/");
+                        // Conditional navigation based on role
+                        if (userRole === Role.ADMIN) {
+                            navigate("/adminDashboard");
+                        } else if (userRole === Role.USER) {
+                            navigate("/");
+                        }
                     });
                 }
             }
@@ -71,14 +92,11 @@ function Login() {
 
     return (
         <div className="app">
-            {/* Full-Screen Split-Screen Container */}
             <div className="split-container">
-                {/* Left Side: Image */}
                 <div className="left-side">
                     {/* Add your image here */}
                 </div>
 
-                {/* Right Side: Form */}
                 <div className="right-side">
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}
@@ -86,7 +104,6 @@ function Login() {
                         transition={{ duration: 0.5 }}
                         className="glass-card"
                     >
-                        {/* Form Header */}
                         <div className="form-header">
                             <h1>{isSignUp ? "Create Account" : "Sign In"}</h1>
                             <p>
@@ -96,7 +113,6 @@ function Login() {
                             </p>
                         </div>
 
-                        {/* Form */}
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="space-y-2">
                                 <label htmlFor="email" className="block text-sm font-medium text-black">
@@ -125,6 +141,25 @@ function Login() {
                                 />
                             </div>
 
+                            {isSignUp && (
+                                <div className="space-y-2">
+                                    <label className="block text-sm font-medium text-black">
+                                        Select Role
+                                    </label>
+                                    <select
+                                        value={formData.role}
+                                        onChange={(e) => setFormData({
+                                            ...formData,
+                                            role: e.target.value as Role
+                                        })}
+                                        className="w-full p-2 border rounded"
+                                    >
+                                        <option value={Role.USER}>User</option>
+                                        <option value={Role.ADMIN}>Admin</option>
+                                    </select>
+                                </div>
+                            )}
+
                             {!isSignUp && (
                                 <div className="flex items-center justify-between text-black">
                                     <Checkbox
@@ -144,7 +179,6 @@ function Login() {
                                 </div>
                             )}
 
-                            {/* Animated Button */}
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
@@ -155,7 +189,6 @@ function Login() {
                             </motion.button>
                         </form>
 
-                        {/* Toggle Sign In/Sign Up */}
                         <div className="toggle-text">
                             {isSignUp ? (
                                 <p>
