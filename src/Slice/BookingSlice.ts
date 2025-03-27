@@ -68,7 +68,7 @@ export const getAllBookings = createAsyncThunk(
     async () => {
         try {
             const response = await api.get("/booking");
-            console.log(response.data)
+            console.log("getAllBooking=============================",response.data)
             return response.data;
         } catch (e) {
             console.log("Failed to get all bookings!", e);
