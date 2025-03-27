@@ -10,10 +10,10 @@ export function SidebarComponent(){
 
     const menuItems = [
         { name: 'Dashboard', path: '/dashboard', icon:dashboard  },
-        { name: 'Bookings', path: '/crop-manage', icon: booking },
-        { name: 'Trains', path: '/field-manage', icon: trains },
-        { name: 'Schedules', path: '/log-manage', icon: schedules },
-        { name: 'Payment', path: '/equipment-manage', icon: payment },
+        { name: 'Bookings', path: '/adminBooking', icon: booking },
+        { name: 'Trains', path: '/adminTrains', icon: trains },
+        { name: 'Schedules', path: '/adminSchedule', icon: schedules },
+        { name: 'Payment', path: '/adminPayment', icon: payment },
 
     ];
 

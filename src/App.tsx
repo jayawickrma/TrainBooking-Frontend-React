@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom";
 import { Content } from "./Page/Content.tsx";
 import NavBar from "./Components/NavBar.tsx";
 import { Gallery } from "./Page/Gallery.tsx";
@@ -14,9 +14,11 @@ import {AdminSchedulePanel} from "./AdminPannel/Components/AdminSchedulePanel.ts
 import {AdminPaymentPanel} from "./AdminPannel/Components/AdminPaymentPannel.tsx";
 import DashBoardComponent from "./AdminPannel/Components/DashBoardComponent.tsx";
 
+
 function App() {
     return (
         <>
+
             <Router>
                 <NavBar />
                 <Routes>
