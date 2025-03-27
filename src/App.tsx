@@ -8,6 +8,11 @@ import { Contact } from "./Page/Contact.tsx";
 import { Services } from "./Page/Services.tsx";
 import { TermsConditions } from "./Page/Terms&Conditons.tsx";
 import LoginComponent from "./Components/LoginComponent.tsx";
+import {AdminBookingPanel} from "./AdminPannel/Components/AdminBookingPanel.tsx";
+import {AdminTrainPanel} from "./AdminPannel/Components/AdminTrainPannel.tsx";
+import {AdminSchedulePanel} from "./AdminPannel/Components/AdminSchedulePanel.tsx";
+import {AdminPaymentPanel} from "./AdminPannel/Components/AdminPaymentPannel.tsx";
+import DashBoardComponent from "./AdminPannel/Components/DashBoardComponent.tsx";
 
 function App() {
     return (
@@ -23,6 +28,11 @@ function App() {
                     <Route path="/rules" element={<TermsConditions />} />
                     <Route path="/login" element={<LoginComponent />}/>
                     <Route path="/signUp" element={<LoginComponent/> }/>
+                    <Route path="/adminDashboard" element={<DashBoardComponent/> }/>
+                    <Route path="/adminBooking" element={<AdminBookingPanel/> }/>
+                    <Route path="/adminTrains" element={<AdminTrainPanel/> }/>
+                    <Route path="/adminSchedule" element={<AdminSchedulePanel/> }/>
+                    <Route path="/adminPayment" element={<AdminPaymentPanel/> }/>
                 </Routes>
             </Router>
         </>
