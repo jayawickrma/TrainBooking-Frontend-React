@@ -69,11 +69,18 @@ function Login() {
             } else {
                 const result = await dispatch(login(user)).unwrap();
                 if (result) {
+                    // Personalized welcome messages based on role
+                    const welcomeMessage = userRole === Role.ADMIN
+                        ? "Welcome to the Admin Dashboard! You have full system access."
+                        : "Welcome aboard! Explore our train booking services.";
+
                     Swal.fire({
-                        title: "Sign In Successful!",
-                        text: "You have successfully signed in.",
+                        title: userRole === Role.ADMIN ? "Admin Login Successful!" : "Login Successful!",
+                        text: welcomeMessage,
                         icon: "success",
-                        confirmButtonText: "OK",
+                        confirmButtonText: "Continue",
+                        background: userRole === Role.ADMIN ? '#e6f3ff' : '#f0f9ff',
+                        iconColor: userRole === Role.ADMIN ? '#2c3e50' : '#3498db'
                     }).then(() => {
                         // Conditional navigation based on role
                         if (userRole === Role.ADMIN) {
