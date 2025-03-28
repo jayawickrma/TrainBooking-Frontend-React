@@ -1,48 +1,54 @@
-import { Routes, Route } from 'react-router-dom';
-import { SidebarComponent } from "./SidebarComponent";
-import { AdminBookingPanel } from "./AdminBookingPanel";
-import { AdminTrainPanel } from "./AdminTrainPannel";
-import { AdminSchedulePanel } from "./AdminSchedulePanel";
-import { AdminPaymentPanel } from "./AdminPaymentPannel";
+import {useNavigate, useLocation, Route, Routes} from 'react-router-dom';
+import dashboard from "../images/dashboard.png";
+import payment from "../images/payment.png";
+import schedules from "../images/schedule.png";
+import trains from "../images/train.png";
+import booking from "../images/booking.png";
+import "../adminCss/SideBar.css";
+import {AdminTrainPanel} from "./AdminTrainPannel.tsx";
+import {AdminSchedulePanel} from "./AdminSchedulePanel.tsx";
+import {AdminPaymentPanel} from "./AdminPaymentPannel.tsx";
+import {AdminBookingPanel} from "./AdminBookingPanel.tsx";
 
-// Dashboard content components
-function Overview() {
+export function SidebarComponent() {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const menuItems = [
+        { name: 'Dashboard', path: '/adminDashboard', icon: dashboard },
+        { name: 'Bookings', path: '/adminBooking', icon: booking },
+        { name: 'Trains', path: '/adminTrains', icon: trains },
+        { name: 'Schedules', path: '/adminSchedule', icon: schedules },
+        { name: 'Payment', path: '/adminPayment', icon: payment },
+    ];
+
     return (
-        <div className="admin-overview">
-            <h1>Admin Dashboard</h1>
-            <div className="dashboard-stats">
-                <div className="stat-card">
-                    <h3>Total Bookings</h3>
-                    <p>120</p>
-                </div>
-                <div className="stat-card">
-                    <h3>Total Trains</h3>
-                    <p>25</p>
-                </div>
-                <div className="stat-card">
-                    <h3>Total Revenue</h3>
-                    <p>$45,000</p>
-                </div>
-            </div>
+        <div className="sidebar fixed left-0 top-0 h-full w-64 bg-gray-800 text-white flex flex-col">
+            <ul className="sidebar-menu flex-1 overflow-y-auto">
+                {menuItems.map((item) => (
+                    <li
+                        key={item.path}
+                        className={`sidebar-item p-4 cursor-pointer hover:bg-gray-700 transition ${location.pathname === item.path ? 'bg-gray-700' : ''}`}
+                        onClick={() => navigate(item.path)}
+                    >
+                        <img src={item.icon} alt={item.name} className="sidebar-icon inline-block mr-3 w-6 h-6" />
+                        <span className="sidebar-text">{item.name}</span>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }
 
 function DashBoardComponent() {
     return (
-        <div style={{ display: 'flex', height: '100vh' }}>
+        <div className="flex h-screen"> <br/> <br/> <br/>
             {/* Sidebar Component */}
             <SidebarComponent />
-
             {/* Main Content Area */}
-            <div style={{
-                flex: 1,
-                padding: '20px',
-                overflowY: 'auto',
-                backgroundColor: '#f4f4f4'
-            }}>
+            <div className="flex-1 p-6 overflow-y-auto bg-gray-100 ml-64">
                 <Routes>
-                    <Route path="" element={<Overview />} />
+                    <Route path="/adminDashboard" element={<DashBoardComponent/>} />
                     <Route path="/adminBooking" element={<AdminBookingPanel />} />
                     <Route path="/adminTrains" element={<AdminTrainPanel />} />
                     <Route path="/adminSchedule" element={<AdminSchedulePanel />} />
