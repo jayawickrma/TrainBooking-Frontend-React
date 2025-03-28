@@ -1,20 +1,21 @@
-import {useNavigate} from "react-router-dom";
+import { useNavigate, useLocation } from 'react-router-dom';
 import dashboard from "../images/dashboard.png"
 import payment from "../images/payment.png"
 import schedules from "../images/schedule.png"
 import trains from "../images/train.png"
 import booking from "../images/booking.png"
 import "../adminCss/SideBar.css"
-export function SidebarComponent(){
-    const navigate = useNavigate(); // Use React Router navigation
+
+export function SidebarComponent() {
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const menuItems = [
-        { name: 'Dashboard', path: '/dashboard', icon:dashboard  },
+        { name: 'Dashboard', path: '/adminDashboard', icon: dashboard },
         { name: 'Bookings', path: '/adminBooking', icon: booking },
         { name: 'Trains', path: '/adminTrains', icon: trains },
         { name: 'Schedules', path: '/adminSchedule', icon: schedules },
         { name: 'Payment', path: '/adminPayment', icon: payment },
-
     ];
 
     return (
@@ -23,7 +24,7 @@ export function SidebarComponent(){
                 {menuItems.map((item) => (
                     <li
                         key={item.path}
-                        className="sidebar-item"
+                        className={`sidebar-item ${location.pathname === item.path ? 'active' : ''}`}
                         onClick={() => navigate(item.path)}
                     >
                         <img src={item.icon} alt={item.name} className="sidebar-icon" />
