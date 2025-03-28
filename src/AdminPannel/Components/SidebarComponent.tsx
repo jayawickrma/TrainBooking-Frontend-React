@@ -1,10 +1,10 @@
-import { useNavigate, useLocation } from 'react-router-dom';
-import dashboard from "../images/dashboard.png"
-import payment from "../images/payment.png"
-import schedules from "../images/schedule.png"
-import trains from "../images/train.png"
-import booking from "../images/booking.png"
-import "../adminCss/SideBar.css"
+import { useNavigate, useLocation } from "react-router-dom";
+import dashboard from "../images/dashboard.png";
+import payment from "../images/payment.png";
+import schedules from "../images/schedule.png";
+import trains from "../images/train.png";
+import booking from "../images/booking.png";
+import "../adminCss/SideBar.css";
 
 export function SidebarComponent() {
     const navigate = useNavigate();
