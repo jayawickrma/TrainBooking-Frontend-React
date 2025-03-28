@@ -137,36 +137,14 @@
     background-color: rgba(255, 0, 0, 0.15);
 }
 
-/* Mobile Menu Button - World Class */
-.mobile-menu-button {
-    position: fixed;
-    top: 25px;
-    left: 25px;
-    background: #3498db;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-    transition: all 0.3s ease;
-}
+
 
 .mobile-menu-button:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
 }
 
-.menu-icon {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(1);
-    transition: all 0.3s ease;
-}
+
 
 .mobile-menu-button:hover .menu-icon {
     transform: rotate(90deg);

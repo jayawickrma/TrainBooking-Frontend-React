@@ -9,7 +9,6 @@ import schedules from "../images/schedule.png";
 import trains from "../images/train.png";
 import booking from "../images/booking.png";
 import logoutIcon from "../images/img.png";
-import menuIcon from "../images/menu.png"; // Add a menu icon for mobile
 import "../adminCss/SideBar.css";
 
 export function SidebarComponent() {
@@ -69,13 +68,6 @@ export function SidebarComponent() {
 
     return (
         <>
-            {/* Mobile menu button */}
-            {isMobile && (
-                <button className="mobile-menu-button" onClick={toggleSidebar}>
-                    <img src={menuIcon} alt="Menu" className="menu-icon" />
-                </button>
-            )}
-
             <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-logo">
                     <h2>Train Admin</h2>
